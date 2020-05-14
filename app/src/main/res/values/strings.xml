@@ -1,0 +1,96 @@
+<resources>
+    <string name="app_name">cgpaUCC</string>
+
+    <string name="action_help">Help</string>
+
+    <!-- Label for overflow menu option that deletes all  data in the app [CHAR LIMIT=20] -->
+    <string name="action_delete_all_entries">Delete All Records</string>
+
+    <!-- Title for the activity to add new data [CHAR LIMIT=20] -->
+    <string name="editor_activity_title_new_course">Add a Course</string>
+
+    <!-- Title for the activity to edit a course [CHAR LIMIT=20] -->
+    <string name="editor_activity_title_edit_course">Edit Course</string>
+
+    <!-- Label for editor menu option to save course and leave editor [CHAR LIMIT=20] -->
+    <string name="action_save">Save</string>
+
+    <!-- Label for editor overflow menu option that deletes the current course [CHAR LIMIT=20] -->
+    <string name="action_delete">Delete</string>
+
+    <!-- Label for overview category of attributes in the editor [CHAR LIMIT=30] -->
+    <string name="category_overview">Course</string>
+
+    <!-- Label for gender information in the editor [CHAR LIMIT=30] -->
+    <string name="category_grade">Grade</string>
+
+    <!-- Label for measurement information in the editor [CHAR LIMIT=30] -->
+    <string name="category_measurement">Credit</string>
+
+    <!-- Text hint for name field in the editor [CHAR LIMIT=30] -->
+    <string name="hint_course_code">Code</string>
+
+    <!-- Text hint for course title field in the editor [CHAR LIMIT=30] -->
+    <string name="hint_course_title">Title</string>
+
+    <!-- Text hint for credit hours in the editor [CHAR LIMIT=30] -->
+    <string name="hint_credit_hours">Hours</string>
+
+    <string name="unit_course_credit">hrs</string>
+
+    <!-- Labels for dropdown menu options for course grades [CHAR LIMIT=20] -->
+    <string name="grade_A">  A  </string>
+    <string name="grade_B1">  B+  </string>
+    <string name="grade_B2">  B  </string>
+    <string name="grade_C1">  C+  </string>
+    <string name="grade_C2">  C  </string>
+    <string name="grade_D1">  D+  </string>
+    <string name="grade_D2">  D  </string>
+    <string name="grade_E">  E  </string>
+
+    <!-- Toast message in editor when new course has been successfully inserted [CHAR LIMIT=NONE] -->
+    <string name="editor_insert_course_successful">Course record saved</string>
+
+    <!-- Toast message in editor when new course has failed to be inserted [CHAR LIMIT=NONE] -->
+    <string name="editor_insert_course_failed">Error with saving course</string>
+
+
+    <string name="editor_update_course_failed">Error updating course</string>
+
+    <!-- Toast message in editor when current course was successfully deleted [CHAR LIMIT=NONE] -->
+    <string name="editor_delete_course_successful">Course deleted</string>
+
+    <!-- Toast message in editor when current course has failed to be deleted [CHAR LIMIT=NONE] -->
+    <string name="editor_delete_course_failed">Error with deleting course</string>
+
+    <!-- Dialog message to ask the user to confirm deleting the current course [CHAR LIMIT=NONE] -->
+    <string name="delete_dialog_msg">Delete this course?</string>
+
+    <!-- Dialog message to ask the user to confirm deleting the current course [CHAR LIMIT=NONE] -->
+    <string name="deleteAll_dialog_msg">Delete All courses?</string>
+
+    <!-- Dialog button text for the option to confirm deleting the current course [CHAR LIMIT=20] -->
+    <string name="delete">Delete</string>
+
+    <!-- Dialog button text for the option to cancel deletion of the current course [CHAR LIMIT=20] -->
+    <string name="cancel">Cancel</string>
+
+    <!-- Dialog message when user is leaving editor but hasn't saved changes [CHAR LIMIT=NONE] -->
+    <string name="unsaved_changes_dialog_msg">Discard your changes and quit editing?</string>
+
+    <!-- Dialog button text for the option to discard a user's changes [CHAR LIMIT=20] -->
+    <string name="discard">Discard</string>
+
+    <!-- Dialog button text for the option to keep editing the current course [CHAR LIMIT=20] -->
+    <string name="keep_editing">Keep Editing</string>
+
+    <string name="editor_update_course_successful">Course updated</string>
+
+    <!-- Title text for the empty view, which describes the empty dog house image [CHAR LIMIT=50] -->
+    <string name="empty_view_title_text">It\'s a bit lonely here...</string>
+
+
+    <!-- Subtitle text for the empty view that prompts the user to add a course [CHAR LIMIT=50] -->
+    <string name="empty_view_subtitle_text">Get started by adding a course</string>
+
+</resources>

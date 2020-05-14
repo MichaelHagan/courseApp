@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- These are the options displayed in the grade drop-down Spinner -->
+    <string-array name="array_grade_options">
+
+        <item>@string/grade_A</item>
+        <item>@string/grade_B1</item>
+        <item>@string/grade_B2</item>
+        <item>@string/grade_C1</item>
+        <item>@string/grade_C2</item>
+        <item>@string/grade_D1</item>
+        <item>@string/grade_D2</item>
+        <item>@string/grade_E</item>
+
+    </string-array>
+</resources>
