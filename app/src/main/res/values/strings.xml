@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">cgpaUCC</string>
+    <string name="app_name">CourseApp</string>
 
     <string name="action_help">Help</string>
 
@@ -37,6 +37,13 @@
     <string name="hint_credit_hours">Hours</string>
 
     <string name="unit_course_credit">hrs</string>
+
+
+    <!-- Tab titles -->
+    <string name="level100">100</string>
+    <string name="level200">200</string>
+    <string name="level300">300</string>
+    <string name="level400">400</string>
 
     <!-- Labels for dropdown menu options for course grades [CHAR LIMIT=20] -->
     <string name="grade_A">  A  </string>
@@ -87,7 +94,7 @@
     <string name="editor_update_course_successful">Course updated</string>
 
     <!-- Title text for the empty view, which describes the empty dog house image [CHAR LIMIT=50] -->
-    <string name="empty_view_title_text">It\'s a bit lonely here...</string>
+    <string name="empty_view_title_text">It seems you\'re yet to add records for this semester...</string>
 
 
     <!-- Subtitle text for the empty view that prompts the user to add a course [CHAR LIMIT=50] -->

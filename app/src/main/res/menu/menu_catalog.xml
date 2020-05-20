@@ -6,12 +6,9 @@
     tools:context=".CatalogActivity">
 
     <item
-        android:id="@+id/action_Help"
-        android:title="@string/action_help"
-        app:showAsAction="never" />
-
-    <item
         android:id="@+id/action_delete_all_entries"
         android:title="@string/action_delete_all_entries"
-        app:showAsAction="never" />
+        android:icon="@drawable/baseline_delete_white_24"
+        app:showAsAction="always" />
+
 </menu>

@@ -2,7 +2,7 @@
 <resources>
 
     <style name="PreviewStyle">
-        <item name="android:fontFamily"></item>
+        <item name="fontFamily"></item>
 
 
     </style>

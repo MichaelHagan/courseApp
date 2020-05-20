@@ -8,7 +8,6 @@ import android.widget.CursorAdapter;
 import android.widget.TextView;
 import com.example.cgpaucc.R;
 
-
 /**
  * {@link gpaCursorAdapter} is an adapter for a list or grid view
  * that uses a {@link Cursor} of gpa data as its data source. This adapter knows
@@ -116,7 +115,9 @@ public class gpaCursorAdapter extends CursorAdapter {
             creditTextView.setTextSize(9);
             creditTextView.setText("AUDIT");
         }
-        else{creditTextView.setText(credit);}
+        else{
+            creditTextView.setTextSize(18);
+            creditTextView.setText(credit);}
         gradePointTextView.setText(gradePoint);
 
     }

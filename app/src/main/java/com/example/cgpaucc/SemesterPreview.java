@@ -19,20 +19,23 @@ import android.content.ContentUris;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.v4.app.LoaderManager;
-import android.support.v4.content.CursorLoader;
-import android.support.v4.content.Loader;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import androidx.loader.app.LoaderManager;
+import androidx.loader.content.CursorLoader;
+import androidx.loader.content.Loader;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
+import data.gpaDbHelper;
 import data.gpaContract.gpaEntry;
 import data.gpaCursorAdapter;
 
@@ -44,7 +47,6 @@ public class SemesterPreview extends AppCompatActivity implements LoaderManager.
 
     /**
      * Semester variable to indicate which semester to work on.
-     *
      */
     int semester;
 
@@ -54,7 +56,6 @@ public class SemesterPreview extends AppCompatActivity implements LoaderManager.
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_semester_preview);
@@ -67,7 +68,7 @@ public class SemesterPreview extends AppCompatActivity implements LoaderManager.
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(SemesterPreview.this, EditorActivity.class);
-                intent.putExtra("SEM_KEY",semester);
+                intent.putExtra("SEM_KEY", semester);
                 startActivity(intent);
             }
         });
@@ -81,7 +82,7 @@ public class SemesterPreview extends AppCompatActivity implements LoaderManager.
 
         //Setup an Adapter to create a list item for each row of course data in the Cursor
         //There is no course data yet (until the loader finishes) so pass in null for the Cursor
-        mCursorAdapter = new gpaCursorAdapter(this,null);
+        mCursorAdapter = new gpaCursorAdapter(this, null);
         courseListView.setAdapter(mCursorAdapter);
 
         //Setup item click Listener
@@ -89,7 +90,7 @@ public class SemesterPreview extends AppCompatActivity implements LoaderManager.
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 //Create new intent to go to {@Link EditorActivity}
-                Intent intent = new Intent(SemesterPreview.this,EditorActivity.class);
+                Intent intent = new Intent(SemesterPreview.this, EditorActivity.class);
 
                 //Form the content URI that represents the specific course that was clicked on,
                 //by appending the "id" (passed as input to this method) onto the
@@ -97,7 +98,7 @@ public class SemesterPreview extends AppCompatActivity implements LoaderManager.
                 //For example, the URI would be "content://com.example.cgpaucc/cgpaucc/2"
                 //if the course with ID 2 was clicked on.
 
-                Uri currentCourseUri = ContentUris.withAppendedId(gpaEntry.CONTENT_URI,id);
+                Uri currentCourseUri = ContentUris.withAppendedId(gpaEntry.CONTENT_URI, id);
 
                 //Set the URI on the data field of the intent
                 intent.setData(currentCourseUri);
@@ -107,20 +108,25 @@ public class SemesterPreview extends AppCompatActivity implements LoaderManager.
             }
         });
         //Kick off the loader
-        getSupportLoaderManager().initLoader(COURSE_LOADER,null,this);
+        getSupportLoaderManager().initLoader(COURSE_LOADER, null, this);
     }
 
-   /** private void insertCourse(){
+    @Override
+    protected void onStart() {
+        super.onStart();
+        switch (semester){
 
-        ContentValues values = new ContentValues();
-        values.put(CourseEntry.COLUMN_Course_NAME,"Toto");
-        values.put(CourseEntry.COLUMN_Course_BREED,"Terrier");
-        values.put(CourseEntry.COLUMN_Course_GENDER,CourseEntry.GENDER_MALE);
-        values.put(CourseEntry.COLUMN_Course_WEIGHT,7);
+            case 1: setTitle("100 Semester 1"); break;
+            case 2: setTitle("100 Semester 2"); break;
+            case 3: setTitle("200 Semester 1"); break;
+            case 4: setTitle("200 Semester 2"); break;
+            case 5: setTitle("300 Semester 1"); break;
+            case 6: setTitle("300 Semester 2"); break;
+            case 7: setTitle("400 Semester 1"); break;
+            default:setTitle("400 Semester 2"); break;
 
-        Uri newUri = getContentResolver().insert(CourseEntry.CONTENT_URI,values);
-
-    }*/
+        }
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -134,12 +140,12 @@ public class SemesterPreview extends AppCompatActivity implements LoaderManager.
     public boolean onOptionsItemSelected(MenuItem item) {
         // User clicked on a menu option in the app bar overflow menu
         switch (item.getItemId()) {
-       /**     // Respond to a click on the "Insert dummy data" menu option
-            case R.id.action_insert_dummy_data:
-                insertCourse();
-                return true;
-            // Respond to a click on the "Delete all entries" menu option
-        **/
+            /**     // Respond to a click on the "Insert dummy data" menu option
+             case R.id.action_insert_dummy_data:
+             insertCourse();
+             return true;
+             // Respond to a click on the "Delete all entries" menu option
+             **/
             case R.id.action_delete_all_entries:
                 showDeleteConfirmationDialog();
                 return true;
@@ -175,11 +181,11 @@ public class SemesterPreview extends AppCompatActivity implements LoaderManager.
     }
 
     @Override
-    public void onLoadFinished( Loader<Cursor> loader, Cursor data) {
+    public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
         //Update {@Link gpaCursorAdapter with this new cursor containing updated course data}
         mCursorAdapter.swapCursor(data);
+        Retriever();
     }
-
 
     @Override
     public void onLoaderReset(Loader<Cursor> loader) {
@@ -224,6 +230,138 @@ public class SemesterPreview extends AppCompatActivity implements LoaderManager.
         // Create and show the AlertDialog
         AlertDialog alertDialog = builder.create();
         alertDialog.show();
+
+    }
+
+    /**
+     * Function to retrieve gpa and credit data to calculate gpa and cgpa
+     */
+
+    private void Retriever() {
+
+        gpaDbHelper gpaRetriever = new gpaDbHelper(this);
+
+        SQLiteDatabase db = gpaRetriever.getReadableDatabase();
+
+        //Define Selection arguments to query semester specific records
+        String selection = null;
+        String[] selectionArgs;
+
+        String[] projection = {
+                gpaEntry.COLUMN_GRADEPOINT,
+                gpaEntry.COLUMN_CREDIT_HOURS,
+                gpaEntry.COLUMN_SEMESTER
+        };
+
+        //Defines the selection arguments depending on semester
+       switch (semester) {
+            case 1:
+                selection = gpaEntry.COLUMN_SEMESTER + "=?";
+            selectionArgs = new String[]{"1"};
+                break;
+
+            case 2:
+                selection = gpaEntry.COLUMN_SEMESTER + "=?" + " OR " + gpaEntry.COLUMN_SEMESTER + "=?";
+                selectionArgs = new String[]{"1","2"};
+                break;
+
+            case 3:
+                selection = gpaEntry.COLUMN_SEMESTER + "=?" + " OR " + gpaEntry.COLUMN_SEMESTER + "=?"+" OR " + gpaEntry.COLUMN_SEMESTER + "=?";
+                selectionArgs = new String[]{"1","2","3"};
+                break;
+
+            case 4:
+                selection = gpaEntry.COLUMN_SEMESTER + "=?" + " OR " +gpaEntry.COLUMN_SEMESTER + "=?" + " OR " +gpaEntry.COLUMN_SEMESTER + "=?" + " OR " +gpaEntry.COLUMN_SEMESTER + "=?";
+                selectionArgs = new String[]{"1","2","3","4"};
+                break;
+            case 5:
+                selection = gpaEntry.COLUMN_SEMESTER + "=?" + " OR " +gpaEntry.COLUMN_SEMESTER + "=?" + " OR " +gpaEntry.COLUMN_SEMESTER + "=?" + " OR " +gpaEntry.COLUMN_SEMESTER + "=?" + " OR " +gpaEntry.COLUMN_SEMESTER + "=?";
+                selectionArgs = new String[]{"1","2","3","4","5"};
+                break;
+
+            case 6:
+                selection = gpaEntry.COLUMN_SEMESTER + "=?" + " OR " +gpaEntry.COLUMN_SEMESTER + "=?" + " OR " +gpaEntry.COLUMN_SEMESTER + "=?" + " OR " +gpaEntry.COLUMN_SEMESTER + "=?" + " OR " +gpaEntry.COLUMN_SEMESTER + "=?" + " OR " +gpaEntry.COLUMN_SEMESTER + "=?";
+                selectionArgs = new String[]{"1","2","3","4","5","6"};
+                break;
+
+            case 7:
+                selection = gpaEntry.COLUMN_SEMESTER + "=?" + " OR " +gpaEntry.COLUMN_SEMESTER + "=?" + " OR " +gpaEntry.COLUMN_SEMESTER + "=?" + " OR " +gpaEntry.COLUMN_SEMESTER + "=?" + " OR " +gpaEntry.COLUMN_SEMESTER + "=?" + " OR " +gpaEntry.COLUMN_SEMESTER + "=?" + " OR " +gpaEntry.COLUMN_SEMESTER + "=?";
+                selectionArgs = new String[]{"1","2","3","4","5","6","7"};
+                break;
+
+            default:
+                selection = gpaEntry.COLUMN_SEMESTER + "=?" + " OR " +gpaEntry.COLUMN_SEMESTER + "=?" + " OR " +gpaEntry.COLUMN_SEMESTER + "=?" + " OR " +gpaEntry.COLUMN_SEMESTER + "=?" + " OR " +gpaEntry.COLUMN_SEMESTER + "=?" + " OR " +gpaEntry.COLUMN_SEMESTER + "=?" + " OR " +gpaEntry.COLUMN_SEMESTER + "=?" + " OR " +gpaEntry.COLUMN_SEMESTER + "=?";
+                selectionArgs = new String[]{"1","2","3","4","5","6","7","8"};
+                break;
+
+        }
+
+
+        Cursor retrieve = db.query(
+                gpaEntry.TABLE_NAME,
+                projection,
+                selection,
+                selectionArgs,
+                null,
+                null,
+                null
+        );
+
+        try {
+
+            int creditColumnIndex = retrieve.getColumnIndex(gpaEntry.COLUMN_CREDIT_HOURS);
+            int gradePointColumnIndex = retrieve.getColumnIndex(gpaEntry.COLUMN_GRADEPOINT);
+            int semesterColumnIndex = retrieve.getColumnIndex(gpaEntry.COLUMN_SEMESTER);
+
+            double totalGradepoint = 0;
+            double semesterGradepoint = 0;
+            int semesterCredit = 0;
+            int totalCredit = 0;
+
+            while (retrieve.moveToNext()) {
+
+                /**
+                 * Calculate gradePoint and credit for a given semester and
+                 * total semesters
+                 */
+                if (retrieve.getInt(semesterColumnIndex) == semester) {
+                    semesterCredit += retrieve.getInt(creditColumnIndex);
+                    semesterGradepoint += retrieve.getDouble(gradePointColumnIndex);
+                }
+
+                totalCredit += retrieve.getInt(creditColumnIndex);
+                totalGradepoint += retrieve.getDouble(gradePointColumnIndex);
+
+            }
+
+            //Calculates gpa and cgpa if Semester records are present
+            if(semesterCredit != 0 || semesterGradepoint != 0) {
+                double gpa = ((semesterGradepoint / (semesterCredit * 4)) * 4);
+                double cgpa = ((totalGradepoint / (totalCredit * 4)) * 4);
+                TextView gpaTextView = (TextView) findViewById(R.id.gpa);
+                TextView cgpaTextView = (TextView) findViewById(R.id.cgpa);
+
+                gpaTextView.setText("GPA: " + String.format("%.5f", gpa));
+                cgpaTextView.setText("CGPA: " + String.format("%.5f", cgpa));
+
+            }
+
+            //Clears the gpa and cgpa TextViews when semester records are empty
+            if(semesterCredit == 0) {
+                TextView gpaTextView = (TextView) findViewById(R.id.gpa);
+                TextView cgpaTextView = (TextView) findViewById(R.id.cgpa);
+
+                gpaTextView.setText(" ");
+                cgpaTextView.setText(" ");
+
+
+            }
+
+
+        } finally {
+            retrieve.close();
+        }
+
 
     }
 

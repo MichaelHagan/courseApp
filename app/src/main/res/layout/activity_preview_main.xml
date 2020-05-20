@@ -1,185 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="?attr/selectableItemBackground"
     android:orientation="vertical"
-    android:padding="40dp"
-    >
+    tools:context="com.example.cgpaucc.SemesterSelection">
 
-    <LinearLayout
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tabs"
+        android:background="@color/colorPrimary"
+        style="@style/CategoryTab"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        >
-        <TextView
-            android:layout_marginLeft="10dp"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="match_parent"
-            android:text="Level"
-            android:gravity="center"
-            />
-        <View
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"/>
-        <TextView
-            android:layout_width="0dp"
-            android:layout_weight="4"
-            android:layout_height="match_parent"
-            android:text="Semester"
-            android:gravity="center"/>
+        android:layout_height="wrap_content" />
 
-
-    </LinearLayout>
-
-    <LinearLayout
+    <androidx.viewpager.widget.ViewPager
+        android:background="@android:color/background_light"
+        android:id="@+id/viewpager"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        >
-        <TextView
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="match_parent"
-            android:text="100"
-            android:gravity="center"/>
-        <View
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="match_parent"/>
-        <TextView
-            android:id="@+id/s101"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="match_parent"
-            android:text="1"
-            android:gravity="center"/>
-        <View
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="match_parent"/>
-        <TextView
-            android:id="@+id/s102"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="match_parent"
-            android:text="2"
-            android:gravity="center"/>
-
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        >
-        <TextView
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="match_parent"
-            android:text="200"
-            android:gravity="center"/>
-        <View
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="match_parent"/>
-        <TextView
-            android:id="@+id/s201"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="match_parent"
-            android:text="1"
-            android:gravity="center"/>
-        <View
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="match_parent"/>
-        <TextView
-            android:id="@+id/s202"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="match_parent"
-            android:text="2"
-            android:gravity="center"/>
-
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        >
-        <TextView
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="match_parent"
-            android:text="300"
-            android:gravity="center"/>
-        <View
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="match_parent"/>
-        <TextView
-            android:id="@+id/s301"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="match_parent"
-            android:text="1"
-            android:gravity="center"/>
-        <View
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="match_parent"/>
-        <TextView
-            android:id="@+id/s302"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="match_parent"
-            android:text="2"
-            android:gravity="center"/>
-
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        >
-        <TextView
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="match_parent"
-            android:text="400"
-            android:gravity="center"/>
-        <View
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="match_parent"/>
-        <TextView
-            android:id="@+id/s401"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="match_parent"
-            android:text="1"
-            android:gravity="center"/>
-        <View
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="match_parent"/>
-        <TextView
-            android:id="@+id/s402"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="match_parent"
-            android:text="2"
-            android:gravity="center"/>
-
-
-    </LinearLayout>
+        android:layout_height="match_parent"/>
 
 </LinearLayout>

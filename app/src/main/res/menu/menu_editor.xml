@@ -14,5 +14,7 @@
     <item
         android:id="@+id/action_delete"
         android:title="@string/action_delete"
-        app:showAsAction="never" />
+        android:icon="@drawable/baseline_delete_white_24"
+        app:showAsAction="always"
+        />
 </menu>

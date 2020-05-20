@@ -6,12 +6,12 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.v4.app.LoaderManager;
-import android.support.v4.app.NavUtils;
-import android.support.v4.content.CursorLoader;
-import android.support.v4.content.Loader;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
+import androidx.loader.app.LoaderManager;
+import androidx.core.app.NavUtils;
+import androidx.loader.content.CursorLoader;
+import androidx.loader.content.Loader;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -22,13 +22,14 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
+
 import data.gpaContract.gpaEntry;
 
 /**
  * Allows user to create a new course or edit an existing one.
  */
 
-public class EditorActivity extends AppCompatActivity implements  LoaderManager.LoaderCallbacks<Cursor> {
+public class EditorActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
 
     /**
      * boolean to show whether form has been altered
@@ -64,20 +65,19 @@ public class EditorActivity extends AppCompatActivity implements  LoaderManager.
 
     /**
      * Semester variable to indicate which semester to work on.
-     *
      */
     int semester;
 
     /**
      * Grade of the course.
-     *
-     * */
+     */
     private double mGrade = 0;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_editor);
 
         //Examine the intent that was used to launch this activity
         //in order to figure out if we're creating a new course or editing an existing one.
@@ -90,7 +90,6 @@ public class EditorActivity extends AppCompatActivity implements  LoaderManager.
         if (currentUri == null) {
             //This is a new course, so change the app bar to say "Add a course"
             setTitle(getString(R.string.editor_activity_title_new_course));
-            setContentView(R.layout.activity_editor);
             //Get Semester value from SemesterPreview Activity
             semester = getIntent().getExtras().getInt("SEM_KEY");
 
@@ -111,10 +110,10 @@ public class EditorActivity extends AppCompatActivity implements  LoaderManager.
         mCreditHoursEditText = (EditText) findViewById(R.id.edit_course_credit);
         mGradeSpinner = (Spinner) findViewById(R.id.spinner_grade);
 
-      mCourseCodeEditText.setOnTouchListener(mTouchListener);
-       mCourseTitleEditText.setOnTouchListener(mTouchListener);
-       mCreditHoursEditText.setOnTouchListener(mTouchListener);
-       mGradeSpinner.setOnTouchListener(mTouchListener);
+        mCourseCodeEditText.setOnTouchListener(mTouchListener);
+        mCourseTitleEditText.setOnTouchListener(mTouchListener);
+        mCreditHoursEditText.setOnTouchListener(mTouchListener);
+        mGradeSpinner.setOnTouchListener(mTouchListener);
 
         setupSpinner();
 
@@ -147,23 +146,17 @@ public class EditorActivity extends AppCompatActivity implements  LoaderManager.
                         mGrade = gpaEntry.GRADE_A; // A
                     } else if (selection.equals(getString(R.string.grade_B1))) {
                         mGrade = gpaEntry.GRADE_B1; // B+
-                    }
-                    else if (selection.equals(getString(R.string.grade_B2))) {
+                    } else if (selection.equals(getString(R.string.grade_B2))) {
                         mGrade = gpaEntry.GRADE_B2; // B
-                    }
-                    else if (selection.equals(getString(R.string.grade_C1))) {
+                    } else if (selection.equals(getString(R.string.grade_C1))) {
                         mGrade = gpaEntry.GRADE_C1; // C+
-                    }
-                    else if (selection.equals(getString(R.string.grade_C2))) {
+                    } else if (selection.equals(getString(R.string.grade_C2))) {
                         mGrade = gpaEntry.GRADE_C2; // C
-                    }
-                    else if (selection.equals(getString(R.string.grade_D1))) {
+                    } else if (selection.equals(getString(R.string.grade_D1))) {
                         mGrade = gpaEntry.GRADE_D1; // D+
-                    }
-                    else if (selection.equals(getString(R.string.grade_D2))) {
+                    } else if (selection.equals(getString(R.string.grade_D2))) {
                         mGrade = gpaEntry.GRADE_D2; // D
-                    }
-                    else {
+                    } else {
                         mGrade = gpaEntry.GRADE_E; // E
                     }
 
@@ -189,8 +182,8 @@ public class EditorActivity extends AppCompatActivity implements  LoaderManager.
         if (mCurrentUri == null &&
                 TextUtils.isEmpty(codeString) && TextUtils.isEmpty(titleString) &&
                 TextUtils.isEmpty(creditString))
-            //&& mGrade == gpaEntry.GENDER_UNKNOWN) 
-        { 
+        //&& mGrade == gpaEntry.GENDER_UNKNOWN)
+        {
             return;
         }
 
@@ -206,14 +199,12 @@ public class EditorActivity extends AppCompatActivity implements  LoaderManager.
         values.put(gpaEntry.COLUMN_COURSE_TITLE, titleString);
         values.put(gpaEntry.COLUMN_CREDIT_HOURS, credit);
         values.put(gpaEntry.COLUMN_COURSE_GRADE, (mGrade));
-        values.put(gpaEntry.COLUMN_SEMESTER,semester);
-        if(mGrade == 0){
-            values.put(gpaEntry.COLUMN_GRADEPOINT,mGrade);
-        }else{
-            values.put(gpaEntry.COLUMN_GRADEPOINT,(((mGrade+1)/2)* credit));
+        values.put(gpaEntry.COLUMN_SEMESTER, semester);
+        if (mGrade == 0) {
+            values.put(gpaEntry.COLUMN_GRADEPOINT, mGrade);
+        } else {
+            values.put(gpaEntry.COLUMN_GRADEPOINT, (((mGrade + 1) / 2) * credit));
         }
-
-
 
 
         if (mCurrentUri == null) {
@@ -395,7 +386,6 @@ public class EditorActivity extends AppCompatActivity implements  LoaderManager.
                     mGradeSpinner.setSelection(7);
                     break;
             }
-
 
 
         }

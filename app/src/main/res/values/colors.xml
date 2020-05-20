@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#6200EE</color>
-    <color name="colorPrimaryDark">#3700B3</color>
-    <color name="colorAccent">#03DAC5</color>
+    <color name="colorPrimary">#F0514B</color>
+    <color name="colorPrimaryDark">#C0403C</color>
+    <color name="colorAccent">#77B3D4</color>
     <color name="editorColorPrimary">#2D3640</color>
     <color name="editorColorPrimaryDark">#394450</color>
+    <color name="editorColorAccent">#F0514B</color>
+
+
 </resources>
