@@ -11,7 +11,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.cgpaucc.R;
-import com.example.cgpaucc.Sem;
 
 import java.util.List;
 

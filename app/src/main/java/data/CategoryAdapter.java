@@ -10,7 +10,6 @@ import com.example.cgpaucc.L200;
 import com.example.cgpaucc.L300;
 import com.example.cgpaucc.L400;
 import com.example.cgpaucc.R;
-import com.example.cgpaucc.Sem;
 
 
 /**

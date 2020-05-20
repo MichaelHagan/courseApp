@@ -1,4 +1,4 @@
-package com.example.cgpaucc;
+package data;
 
 public class Sem {
 

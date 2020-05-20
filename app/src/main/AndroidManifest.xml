@@ -9,21 +9,45 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
+        <activity android:name=".HelpActivity"
+            android:label="@string/help_title"
+            android:parentActivityName=".SemesterSelection">
+            <!-- Parent activity meta-data to support 4.0 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".SemesterSelection"/>
+        </activity>
+
         <activity android:name=".SemesterSelection">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".SemesterPreview"
-            android:theme="@style/SemPreviewTheme"/>
-        <activity android:name=".EditorActivity"
-            android:theme="@style/EditorTheme"/>
+
+        <activity
+            android:name=".SemesterPreview"
+            android:theme="@style/SemPreviewTheme"
+            android:parentActivityName=".SemesterSelection">
+        <!-- Parent activity meta-data to support 4.0 and lower -->
+        <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value=".SemesterSelection"/>
+
+        </activity>
+
+
+        <activity
+            android:name=".EditorActivity"
+            android:theme="@style/EditorTheme"
+            />
+
         <provider
             android:name="data.gpaProvider"
             android:authorities="com.example.cgpaucc"
             android:exported="false" />
-
     </application>
 
 </manifest>

@@ -100,4 +100,34 @@
     <!-- Subtitle text for the empty view that prompts the user to add a course [CHAR LIMIT=50] -->
     <string name="empty_view_subtitle_text">Get started by adding a course</string>
 
+    <!-- Strings for help activity-->
+    <string name="help1"><b>Selecting a semester</b>\n\nTo select a semester and access its records, simply swipe to the
+desired level and select the corresponding semester.</string>
+
+    <string name="help2"><b>Adding a course</b>\n\nTo add a course, tap on the blue floating button with the "+" symbol.</string>
+    <string name="help3"><b>Adding a course</b>\n\nAn add course form is displayed from which users can enter course information
+and tap the save icon to save.</string>
+
+    <string name="help4"><b>Editing a course</b>\n\nTo edit a course, simply tap on a saved course from the semester records preview
+page.</string>
+
+    <string name="help5"><b>Editing a course(Saving an edited course)</b>\n\nA form identical to the add course form is displayed with information from the selected course.
+Simply make desired changes and tap the save icon to finish editing.</string>
+
+    <string name="help6"><b>Editing a course(Deleting a selected course)</b>\n\nTo delete a course, simply tap the delete icon on the upper right corner of the
+edit course screen.</string>
+
+    <string name="help7"><b>Deleting all courses</b>\n\nTo delete all courses, tap the delete icon on the upper right corner of the
+semester records preview screen.</string>
+
+    <string name="help8"><b>Note</b>\n\nThe app can be used to make projections for a semester.
+Courses for a semester can be added from which its grades can
+be altered to check how it affects the final cgpa.
+Users can use this to know the grade needed, for each course,
+to achieve a target cgpa.</string>
+
+    <string name="About"><b>About the app</b>\n\nCourseApp is a grade point average (gpa) and cumulative grade point average(cgpa)
+    monitoring app. It can be used to calculate gpa and cgpa as per courses added.</string>
+
+<string name="help_title">Help</string>
 </resources>

@@ -1,8 +1,10 @@
 package com.example.cgpaucc;
 
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.MenuItem;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
@@ -51,4 +53,14 @@ public class SemesterSelection extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.menu_preview_main, menu);
         return true;
     }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        Intent help = new Intent(SemesterSelection.this,HelpActivity.class);
+        startActivity(help);
+        return true;
+
+    }
+
+
 }

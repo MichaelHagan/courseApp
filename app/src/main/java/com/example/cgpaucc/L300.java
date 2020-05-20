@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 
 import java.util.ArrayList;
 
+import data.Sem;
 import data.SemAdapter;
 
 /**

@@ -140,12 +140,7 @@ public class SemesterPreview extends AppCompatActivity implements LoaderManager.
     public boolean onOptionsItemSelected(MenuItem item) {
         // User clicked on a menu option in the app bar overflow menu
         switch (item.getItemId()) {
-            /**     // Respond to a click on the "Insert dummy data" menu option
-             case R.id.action_insert_dummy_data:
-             insertCourse();
-             return true;
-             // Respond to a click on the "Delete all entries" menu option
-             **/
+
             case R.id.action_delete_all_entries:
                 showDeleteConfirmationDialog();
                 return true;

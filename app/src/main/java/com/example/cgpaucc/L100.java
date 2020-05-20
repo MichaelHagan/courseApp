@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
+import data.Sem;
 import data.SemAdapter;
 
 /**
