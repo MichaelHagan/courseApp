@@ -8,6 +8,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.util.Log;
+
 import data.gpaContract.gpaEntry;
 
 /**
@@ -16,10 +17,14 @@ import data.gpaContract.gpaEntry;
 
 public class gpaProvider extends ContentProvider {
 
-    /** URI matcher code for the content URI for the data table */
+    /**
+     * URI matcher code for the content URI for the data table
+     */
     private static final int DATA = 100;
 
-    /** URI matcher code for the content URI for a single data in the table */
+    /**
+     * URI matcher code for the content URI for a single data in the table
+     */
     private static final int DATA_ID = 101;
 
     /**
@@ -34,14 +39,18 @@ public class gpaProvider extends ContentProvider {
         // The calls to addURI() go here, for all of the content URI patterns that the provider
         // should recognize. All paths added to the UriMatcher have a corresponding code to return
         // when a match is found.
-        sUriMatcher.addURI(gpaEntry.CONTENT_AUTHORITY,gpaEntry.PATH_CGPAUCC,DATA);
+        sUriMatcher.addURI(gpaEntry.CONTENT_AUTHORITY, gpaEntry.PATH_CGPAUCC, DATA);
         sUriMatcher.addURI(gpaEntry.CONTENT_AUTHORITY, gpaEntry.PATH_CGPAUCC + "/#", DATA_ID);
     }
 
-    /** Tag for the log messages */
+    /**
+     * Tag for the log messages
+     */
     public static final String LOG_TAG = gpaProvider.class.getSimpleName();
 
-    /**Database Helper object*/
+    /**
+     * Database Helper object
+     */
     private gpaDbHelper mDbHelper;
 
     /**
@@ -93,7 +102,7 @@ public class gpaProvider extends ContentProvider {
         //Set notification URI on the Cursor
         //So we know what content URI the Cursor was created for.
         //If the data at this URI changes, then we know we need to update the Cursor.
-        cursor.setNotificationUri(getContext().getContentResolver(),uri);
+        cursor.setNotificationUri(getContext().getContentResolver(), uri);
 
         //return the cursor
         return cursor;
@@ -128,10 +137,11 @@ public class gpaProvider extends ContentProvider {
         // If the ID is -1, then the insertion failed. Log an error and return null.
         if (id == -1) {
             Log.e(LOG_TAG, "Failed to insert row for " + uri);
-            return null;}
+            return null;
+        }
 
         //Notify all listeners that the data has changed for the cgpa content URI
-        getContext().getContentResolver().notifyChange(uri,null);
+        getContext().getContentResolver().notifyChange(uri, null);
 
         // Once we know the ID of the new row in the table,
         // return the new URI with the ID appended to the end of it
@@ -169,38 +179,34 @@ public class gpaProvider extends ContentProvider {
      * @param cValues   the data to be stored
      * @return selectionArgs which contents the values for the where clause
      */
-    private int updatecgpa(ContentValues cValues,Uri uri, String selection, String[] selectionArgs) {
+    private int updatecgpa(ContentValues cValues, Uri uri, String selection, String[] selectionArgs) {
         //get access to the database
         SQLiteDatabase db = mDbHelper.getWritableDatabase();
-
-        //validating data
-        //get each value contained in the ContentValues object
 
 
         //check that the courseCode value is not empty
         if (cValues.containsKey(gpaEntry.COLUMN_COURSE_CODE)) {
             String code = cValues.getAsString(gpaEntry.COLUMN_COURSE_CODE);
-            //validating the name attribute
+            //validating the code attribute
             if (code.isEmpty()) {
                 throw new IllegalStateException("Course code cannot be empty");
             }
         }
 
-        //check that the courseTitle value is not empty
         if (cValues.containsKey(gpaEntry.COLUMN_COURSE_GRADE)) {
             Integer grade = cValues.getAsInteger(gpaEntry.COLUMN_COURSE_GRADE);
 
-            //validation for the gender attribute
-            if (grade != gpaContract.isValidGender(grade) && grade == null) {
+            //validation for the code attribute
+            if (grade != gpaContract.isValidGrade(grade) && grade == null) {
                 throw new IllegalStateException("Grade is not valid");
             }
         }
 
-        //check that the name value is not empty
+        //check that the credit value is not empty
         if (cValues.containsKey(gpaEntry.COLUMN_CREDIT_HOURS)) {
             Integer credit = cValues.getAsInteger(gpaEntry.COLUMN_CREDIT_HOURS);
 
-            //validation for the weight
+            //validation for credit hours
             if (credit < 0 && credit != null) {
                 throw new IllegalStateException("Credit Hours is invalid");
             }
@@ -236,7 +242,7 @@ public class gpaProvider extends ContentProvider {
                 //the selectionArgs holds an array of values for the selection clause
                 selectionArgs = new String[]{String.valueOf(ContentUris.parseId(uri))};
 
-                return deleteCourse(uri,selection, selectionArgs);
+                return deleteCourse(uri, selection, selectionArgs);
 
             default:
                 throw new IllegalArgumentException("Deletion is not supported for" + uri);

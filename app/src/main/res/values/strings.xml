@@ -54,6 +54,7 @@
     <string name="grade_D1">  D+  </string>
     <string name="grade_D2">  D  </string>
     <string name="grade_E">  E  </string>
+    <string name="Inactive">Pending</string>
 
     <!-- Toast message in editor when new course has been successfully inserted [CHAR LIMIT=NONE] -->
     <string name="editor_insert_course_successful">Course record saved</string>
@@ -73,7 +74,7 @@
     <!-- Dialog message to ask the user to confirm deleting the current course [CHAR LIMIT=NONE] -->
     <string name="delete_dialog_msg">Delete this course?</string>
 
-    <!-- Dialog message to ask the user to confirm deleting the current course [CHAR LIMIT=NONE] -->
+    <!-- Dialog message to ask the user to confirm deleting the current semester course records[CHAR LIMIT=NONE] -->
     <string name="deleteAll_dialog_msg">Delete All courses?</string>
 
     <!-- Dialog button text for the option to confirm deleting the current course [CHAR LIMIT=20] -->
@@ -93,7 +94,7 @@
 
     <string name="editor_update_course_successful">Course updated</string>
 
-    <!-- Title text for the empty view, which describes the empty dog house image [CHAR LIMIT=50] -->
+    <!-- Title text for the empty view image [CHAR LIMIT=50] -->
     <string name="empty_view_title_text">It seems you\'re yet to add records for this semester...</string>
 
 
@@ -117,7 +118,7 @@ Simply make desired changes and tap the save icon to finish editing.</string>
     <string name="help6"><b>Editing a course(Deleting a selected course)</b>\n\nTo delete a course, simply tap the delete icon on the upper right corner of the
 edit course screen.</string>
 
-    <string name="help7"><b>Deleting all courses</b>\n\nTo delete all courses, tap the delete icon on the upper right corner of the
+    <string name="help7"><b>Deleting all courses</b>\n\nTo delete all courses for a given semester, tap the delete icon on the upper right corner of the
 semester records preview screen.</string>
 
     <string name="help8"><b>Note</b>\n\nThe app can be used to make projections for a semester.
@@ -127,7 +128,8 @@ Users can use this to know the grade needed, for each course,
 to achieve a target cgpa.</string>
 
     <string name="About"><b>About the app</b>\n\nCourseApp is a grade point average (gpa) and cumulative grade point average(cgpa)
-    monitoring app. It can be used to calculate gpa and cgpa as per courses added.</string>
+    monitoring app. It is used to calculate gpa and cgpa as per courses added.</string>
 
-<string name="help_title">Help</string>
+    <string name="help_title">Help</string>
+
 </resources>

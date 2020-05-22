@@ -10,13 +10,14 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name=".HelpActivity"
+        <activity
+            android:name=".HelpActivity"
             android:label="@string/help_title"
             android:parentActivityName=".SemesterSelection">
             <!-- Parent activity meta-data to support 4.0 and lower -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".SemesterSelection"/>
+                android:value=".SemesterSelection" />
         </activity>
 
         <activity android:name=".SemesterSelection">
@@ -29,20 +30,19 @@
 
         <activity
             android:name=".SemesterPreview"
-            android:theme="@style/SemPreviewTheme"
-            android:parentActivityName=".SemesterSelection">
-        <!-- Parent activity meta-data to support 4.0 and lower -->
-        <meta-data
-            android:name="android.support.PARENT_ACTIVITY"
-            android:value=".SemesterSelection"/>
+            android:parentActivityName=".SemesterSelection"
+            android:theme="@style/SemPreviewTheme">
+            <!-- Parent activity meta-data to support 4.0 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".SemesterSelection" />
 
         </activity>
 
 
         <activity
             android:name=".EditorActivity"
-            android:theme="@style/EditorTheme"
-            />
+            android:theme="@style/EditorTheme" />
 
         <provider
             android:name="data.gpaProvider"

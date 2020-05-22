@@ -4,33 +4,31 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="horizontal"
     android:minHeight="78dp"
+    android:orientation="horizontal"
 
     >
 
     <ImageView
-        android:background="@android:color/background_light"
         android:id="@+id/image"
         android:layout_width="78dp"
         android:layout_height="78dp"
-        android:paddingTop="3dp"
-        />
+        android:background="@android:color/background_light"
+        android:paddingTop="3dp" />
 
     <RelativeLayout
         android:id="@+id/text_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingLeft="10dp"
         android:background="?android:selectableItemBackground"
-        >
+        android:paddingLeft="10dp">
 
         <TextView
-            android:layout_height="match_parent"
             android:id="@+id/Sem_text_view"
-            android:gravity="center"
             android:layout_width="wrap_content"
+            android:layout_height="match_parent"
             android:fontFamily="sans-serif-medium"
+            android:gravity="center"
             android:textAppearance="?android:textAppearanceMedium"
             android:textColor="@android:color/black"
             tools:text="First Semester"
@@ -40,16 +38,16 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingRight="8dp"
-            android:layout_centerVertical="true"
             android:layout_alignParentRight="true"
-            app:srcCompat="@drawable/baseline_arrow_forward_ios_black_24"
-            />
+            android:layout_centerVertical="true"
+            android:paddingRight="8dp"
+            app:srcCompat="@drawable/baseline_arrow_forward_ios_black_24" />
+
         <View
             android:layout_width="match_parent"
             android:layout_height="0.5dp"
             android:layout_alignParentBottom="true"
-            android:background="@android:color/darker_gray"/>
+            android:background="@android:color/darker_gray" />
 
     </RelativeLayout>
 

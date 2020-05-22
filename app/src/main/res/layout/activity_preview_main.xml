@@ -9,15 +9,15 @@
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabs"
-        android:background="@color/colorPrimary"
         style="@style/CategoryTab"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary" />
 
     <androidx.viewpager.widget.ViewPager
-        android:background="@android:color/background_light"
         android:id="@+id/viewpager"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        android:background="@android:color/background_light" />
 
 </LinearLayout>

@@ -22,12 +22,15 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.Bundle;
+
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
 import androidx.loader.app.LoaderManager;
 import androidx.loader.content.CursorLoader;
 import androidx.loader.content.Loader;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -35,6 +38,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
+
 import data.gpaDbHelper;
 import data.gpaContract.gpaEntry;
 import data.gpaCursorAdapter;
@@ -114,16 +118,32 @@ public class SemesterPreview extends AppCompatActivity implements LoaderManager.
     @Override
     protected void onStart() {
         super.onStart();
-        switch (semester){
+        switch (semester) {
 
-            case 1: setTitle("100 Semester 1"); break;
-            case 2: setTitle("100 Semester 2"); break;
-            case 3: setTitle("200 Semester 1"); break;
-            case 4: setTitle("200 Semester 2"); break;
-            case 5: setTitle("300 Semester 1"); break;
-            case 6: setTitle("300 Semester 2"); break;
-            case 7: setTitle("400 Semester 1"); break;
-            default:setTitle("400 Semester 2"); break;
+            case 1:
+                setTitle("100 Semester 1");
+                break;
+            case 2:
+                setTitle("100 Semester 2");
+                break;
+            case 3:
+                setTitle("200 Semester 1");
+                break;
+            case 4:
+                setTitle("200 Semester 2");
+                break;
+            case 5:
+                setTitle("300 Semester 1");
+                break;
+            case 6:
+                setTitle("300 Semester 2");
+                break;
+            case 7:
+                setTitle("400 Semester 1");
+                break;
+            default:
+                setTitle("400 Semester 2");
+                break;
 
         }
     }
@@ -249,44 +269,44 @@ public class SemesterPreview extends AppCompatActivity implements LoaderManager.
         };
 
         //Defines the selection arguments depending on semester
-       switch (semester) {
+        switch (semester) {
             case 1:
                 selection = gpaEntry.COLUMN_SEMESTER + "=?";
-            selectionArgs = new String[]{"1"};
+                selectionArgs = new String[]{"1"};
                 break;
 
             case 2:
                 selection = gpaEntry.COLUMN_SEMESTER + "=?" + " OR " + gpaEntry.COLUMN_SEMESTER + "=?";
-                selectionArgs = new String[]{"1","2"};
+                selectionArgs = new String[]{"1", "2"};
                 break;
 
             case 3:
-                selection = gpaEntry.COLUMN_SEMESTER + "=?" + " OR " + gpaEntry.COLUMN_SEMESTER + "=?"+" OR " + gpaEntry.COLUMN_SEMESTER + "=?";
-                selectionArgs = new String[]{"1","2","3"};
+                selection = gpaEntry.COLUMN_SEMESTER + "=?" + " OR " + gpaEntry.COLUMN_SEMESTER + "=?" + " OR " + gpaEntry.COLUMN_SEMESTER + "=?";
+                selectionArgs = new String[]{"1", "2", "3"};
                 break;
 
             case 4:
-                selection = gpaEntry.COLUMN_SEMESTER + "=?" + " OR " +gpaEntry.COLUMN_SEMESTER + "=?" + " OR " +gpaEntry.COLUMN_SEMESTER + "=?" + " OR " +gpaEntry.COLUMN_SEMESTER + "=?";
-                selectionArgs = new String[]{"1","2","3","4"};
+                selection = gpaEntry.COLUMN_SEMESTER + "=?" + " OR " + gpaEntry.COLUMN_SEMESTER + "=?" + " OR " + gpaEntry.COLUMN_SEMESTER + "=?" + " OR " + gpaEntry.COLUMN_SEMESTER + "=?";
+                selectionArgs = new String[]{"1", "2", "3", "4"};
                 break;
             case 5:
-                selection = gpaEntry.COLUMN_SEMESTER + "=?" + " OR " +gpaEntry.COLUMN_SEMESTER + "=?" + " OR " +gpaEntry.COLUMN_SEMESTER + "=?" + " OR " +gpaEntry.COLUMN_SEMESTER + "=?" + " OR " +gpaEntry.COLUMN_SEMESTER + "=?";
-                selectionArgs = new String[]{"1","2","3","4","5"};
+                selection = gpaEntry.COLUMN_SEMESTER + "=?" + " OR " + gpaEntry.COLUMN_SEMESTER + "=?" + " OR " + gpaEntry.COLUMN_SEMESTER + "=?" + " OR " + gpaEntry.COLUMN_SEMESTER + "=?" + " OR " + gpaEntry.COLUMN_SEMESTER + "=?";
+                selectionArgs = new String[]{"1", "2", "3", "4", "5"};
                 break;
 
             case 6:
-                selection = gpaEntry.COLUMN_SEMESTER + "=?" + " OR " +gpaEntry.COLUMN_SEMESTER + "=?" + " OR " +gpaEntry.COLUMN_SEMESTER + "=?" + " OR " +gpaEntry.COLUMN_SEMESTER + "=?" + " OR " +gpaEntry.COLUMN_SEMESTER + "=?" + " OR " +gpaEntry.COLUMN_SEMESTER + "=?";
-                selectionArgs = new String[]{"1","2","3","4","5","6"};
+                selection = gpaEntry.COLUMN_SEMESTER + "=?" + " OR " + gpaEntry.COLUMN_SEMESTER + "=?" + " OR " + gpaEntry.COLUMN_SEMESTER + "=?" + " OR " + gpaEntry.COLUMN_SEMESTER + "=?" + " OR " + gpaEntry.COLUMN_SEMESTER + "=?" + " OR " + gpaEntry.COLUMN_SEMESTER + "=?";
+                selectionArgs = new String[]{"1", "2", "3", "4", "5", "6"};
                 break;
 
             case 7:
-                selection = gpaEntry.COLUMN_SEMESTER + "=?" + " OR " +gpaEntry.COLUMN_SEMESTER + "=?" + " OR " +gpaEntry.COLUMN_SEMESTER + "=?" + " OR " +gpaEntry.COLUMN_SEMESTER + "=?" + " OR " +gpaEntry.COLUMN_SEMESTER + "=?" + " OR " +gpaEntry.COLUMN_SEMESTER + "=?" + " OR " +gpaEntry.COLUMN_SEMESTER + "=?";
-                selectionArgs = new String[]{"1","2","3","4","5","6","7"};
+                selection = gpaEntry.COLUMN_SEMESTER + "=?" + " OR " + gpaEntry.COLUMN_SEMESTER + "=?" + " OR " + gpaEntry.COLUMN_SEMESTER + "=?" + " OR " + gpaEntry.COLUMN_SEMESTER + "=?" + " OR " + gpaEntry.COLUMN_SEMESTER + "=?" + " OR " + gpaEntry.COLUMN_SEMESTER + "=?" + " OR " + gpaEntry.COLUMN_SEMESTER + "=?";
+                selectionArgs = new String[]{"1", "2", "3", "4", "5", "6", "7"};
                 break;
 
             default:
-                selection = gpaEntry.COLUMN_SEMESTER + "=?" + " OR " +gpaEntry.COLUMN_SEMESTER + "=?" + " OR " +gpaEntry.COLUMN_SEMESTER + "=?" + " OR " +gpaEntry.COLUMN_SEMESTER + "=?" + " OR " +gpaEntry.COLUMN_SEMESTER + "=?" + " OR " +gpaEntry.COLUMN_SEMESTER + "=?" + " OR " +gpaEntry.COLUMN_SEMESTER + "=?" + " OR " +gpaEntry.COLUMN_SEMESTER + "=?";
-                selectionArgs = new String[]{"1","2","3","4","5","6","7","8"};
+                selection = gpaEntry.COLUMN_SEMESTER + "=?" + " OR " + gpaEntry.COLUMN_SEMESTER + "=?" + " OR " + gpaEntry.COLUMN_SEMESTER + "=?" + " OR " + gpaEntry.COLUMN_SEMESTER + "=?" + " OR " + gpaEntry.COLUMN_SEMESTER + "=?" + " OR " + gpaEntry.COLUMN_SEMESTER + "=?" + " OR " + gpaEntry.COLUMN_SEMESTER + "=?" + " OR " + gpaEntry.COLUMN_SEMESTER + "=?";
+                selectionArgs = new String[]{"1", "2", "3", "4", "5", "6", "7", "8"};
                 break;
 
         }
@@ -330,7 +350,7 @@ public class SemesterPreview extends AppCompatActivity implements LoaderManager.
             }
 
             //Calculates gpa and cgpa if Semester records are present
-            if(semesterCredit != 0 || semesterGradepoint != 0) {
+            if (semesterCredit != 0 || semesterGradepoint != 0) {
                 double gpa = ((semesterGradepoint / (semesterCredit * 4)) * 4);
                 double cgpa = ((totalGradepoint / (totalCredit * 4)) * 4);
                 TextView gpaTextView = (TextView) findViewById(R.id.gpa);
@@ -342,7 +362,7 @@ public class SemesterPreview extends AppCompatActivity implements LoaderManager.
             }
 
             //Clears the gpa and cgpa TextViews when semester records are empty
-            if(semesterCredit == 0) {
+            if (semesterCredit == 0) {
                 TextView gpaTextView = (TextView) findViewById(R.id.gpa);
                 TextView cgpaTextView = (TextView) findViewById(R.id.cgpa);
 

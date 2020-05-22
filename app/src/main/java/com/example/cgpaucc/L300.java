@@ -41,31 +41,6 @@ public class L300 extends Fragment implements SemAdapter.onSemListener{
         sem.add(new Sem("First Semester",R.drawable.l300s1));
         sem.add(new Sem("Second Semester",R.drawable.l300s2));
 
-      /**  SemAdapter StAd = new SemAdapter((AppCompatActivity) getActivity(), sem, R.color.category_colors);
-
-        ListView root = (ListView) rootView.findViewById(R.id.rootview);
-
-        root.setAdapter(StAd);
-
-        root.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Sem selectedSem = sem.get(position);
-                if(position == 0){
-                    Intent Intent = new Intent(getActivity(),SemesterPreview.class);
-                    Intent.putExtra("SEM_KEY", 5);
-                    startActivity(Intent);
-                }
-                else {
-
-                    Intent Intent = new Intent(getActivity(),SemesterPreview.class);
-                    Intent.putExtra("SEM_KEY", 6);
-                    startActivity(Intent);
-                }
-            }
-        });
-
-*/
         SemAdapter StAd = new SemAdapter(sem,this);
 
         RecyclerView root = (RecyclerView) rootView.findViewById(R.id.rootview);

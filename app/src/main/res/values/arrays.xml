@@ -11,6 +11,7 @@
         <item>@string/grade_D1</item>
         <item>@string/grade_D2</item>
         <item>@string/grade_E</item>
+        <item>@string/Inactive</item>
 
     </string-array>
 </resources>

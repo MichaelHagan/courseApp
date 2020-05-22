@@ -49,16 +49,7 @@ public class L100 extends Fragment implements SemAdapter.onSemListener {
         root.setAdapter(StAd);
 
         root.setLayoutManager(new LinearLayoutManager(getContext()));
-/**
-        //Sends an intent passing in the semester value for a given semester
-        root.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-            }
-        });
-
-*/
         return rootView;
     }
 

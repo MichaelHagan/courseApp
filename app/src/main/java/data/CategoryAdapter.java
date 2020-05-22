@@ -1,6 +1,7 @@
 package data;
 
 import android.content.Context;
+
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
@@ -18,15 +19,17 @@ import com.example.cgpaucc.R;
  */
 public class CategoryAdapter extends FragmentPagerAdapter {
 
-    /** Context of the app */
+    /**
+     * Context of the app
+     */
     private Context mContext;
 
     /**
      * Create a new {@link CategoryAdapter} object.
      *
      * @param context is the context of the app
-     * @param fm is the fragment manager that will keep each fragment's state in the adapter
-     *           across swipes.
+     * @param fm      is the fragment manager that will keep each fragment's state in the adapter
+     *                across swipes.
      */
     public CategoryAdapter(Context context, FragmentManager fm) {
         super(fm);

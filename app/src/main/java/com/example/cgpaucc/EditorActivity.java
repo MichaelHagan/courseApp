@@ -6,12 +6,14 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
+
 import androidx.loader.app.LoaderManager;
 import androidx.core.app.NavUtils;
 import androidx.loader.content.CursorLoader;
 import androidx.loader.content.Loader;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+
 import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -121,7 +123,7 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
     }
 
     /**
-     * Setup the dropdown spinner that allows the user to select the gender of the course.
+     * Setup the dropdown spinner that allows the user to select the grade of the course.
      */
     private void setupSpinner() {
         // Create adapter for spinner. The list options are from the String array it will use
@@ -156,8 +158,10 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
                         mGrade = gpaEntry.GRADE_D1; // D+
                     } else if (selection.equals(getString(R.string.grade_D2))) {
                         mGrade = gpaEntry.GRADE_D2; // D
-                    } else {
+                    } else if (selection.equals(getString(R.string.grade_E))) {
                         mGrade = gpaEntry.GRADE_E; // E
+                    } else {
+                        mGrade = gpaEntry.INACTIVE; // Inactive
                     }
 
                 }
@@ -179,11 +183,10 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
         String titleString = mCourseTitleEditText.getText().toString().trim();
         String creditString = mCreditHoursEditText.getText().toString().trim();
 
+        //close the activity of nothing is inputted
         if (mCurrentUri == null &&
                 TextUtils.isEmpty(codeString) && TextUtils.isEmpty(titleString) &&
-                TextUtils.isEmpty(creditString))
-        //&& mGrade == gpaEntry.GENDER_UNKNOWN)
-        {
+                TextUtils.isEmpty(creditString)) {
             return;
         }
 
@@ -200,8 +203,8 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
         values.put(gpaEntry.COLUMN_CREDIT_HOURS, credit);
         values.put(gpaEntry.COLUMN_COURSE_GRADE, (mGrade));
         values.put(gpaEntry.COLUMN_SEMESTER, semester);
-        if (mGrade == 0) {
-            values.put(gpaEntry.COLUMN_GRADEPOINT, mGrade);
+        if (mGrade == 0 || mGrade == 8) {
+            values.put(gpaEntry.COLUMN_GRADEPOINT, 0);
         } else {
             values.put(gpaEntry.COLUMN_GRADEPOINT, (((mGrade + 1) / 2) * credit));
         }
@@ -357,7 +360,7 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
             mCreditHoursEditText.setText(Integer.toString(credit));
             semester = semesterL;
 
-            // Gender is a dropdown spinner, so map the constant value from the database
+            // Grade is a dropdown spinner, so map the constant value from the database
             // into one of the dropdown options
             // Then call setSelection() so that option is displayed on screen as the current selection.
             switch (grade) {
@@ -382,8 +385,10 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
                 case gpaEntry.GRADE_D2:
                     mGradeSpinner.setSelection(6);
                     break;
-                default:
+                case gpaEntry.GRADE_E:
                     mGradeSpinner.setSelection(7);
+                default:
+                    mGradeSpinner.setSelection(8);
                     break;
             }
 

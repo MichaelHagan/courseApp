@@ -1,4 +1,5 @@
 package data;
+
 import android.content.Context;
 import android.database.Cursor;
 import android.view.LayoutInflater;
@@ -6,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CursorAdapter;
 import android.widget.TextView;
+
 import com.example.cgpaucc.R;
 
 /**
@@ -25,6 +27,7 @@ public class gpaCursorAdapter extends CursorAdapter {
         super(context, c, 0 /* flags */);
     }
 
+
     /**
      * Makes a new blank list item view. No data is set (or bound) to the views yet.
      *
@@ -37,7 +40,7 @@ public class gpaCursorAdapter extends CursorAdapter {
     @Override
     public View newView(Context context, Cursor cursor, ViewGroup parent) {
 
-        return LayoutInflater.from(context).inflate(R.layout.list_item,parent,false);
+        return LayoutInflater.from(context).inflate(R.layout.list_item, parent, false);
 
     }
 
@@ -69,17 +72,17 @@ public class gpaCursorAdapter extends CursorAdapter {
         int gradePointColumnIndex = cursor.getColumnIndex(gpaContract.gpaEntry.COLUMN_GRADEPOINT);
 
         //Read the gpa attributes from the Cursor for the current gpa
-        String  course_code  = cursor.getString(course_codeColumnIndex);
-        String  course_title = cursor.getString(course_titleColumnIndex);
-        String  grade = cursor.getString(gradeColumnIndex);
-        String  credit = cursor.getString(creditColumnIndex);
-        String  gradePoint = cursor.getString(gradePointColumnIndex);
+        String course_code = cursor.getString(course_codeColumnIndex);
+        String course_title = cursor.getString(course_titleColumnIndex);
+        String grade = cursor.getString(gradeColumnIndex);
+        String credit = cursor.getString(creditColumnIndex);
+        String gradePoint = cursor.getString(gradePointColumnIndex);
 
         int grade_num = Integer.parseInt(grade);
 
         //Switch statement to convert grade integer value to grade text
         String g;
-        switch (grade_num){
+        switch (grade_num) {
             case 7:
                 g = "A";
                 break;
@@ -102,23 +105,32 @@ public class gpaCursorAdapter extends CursorAdapter {
             case 1:
                 g = "D";
                 break;
-            default:
+            case 0:
                 g = "E";
+                break;
+            default:
+                g = "PENDING";
                 break;
         }
 
         //Update the TextViews with the attributes for the current record
         course_codeTextView.setText(course_code);
         course_titleTextView.setText(course_title);
-        gradeTextView.setText(g);
-        if(credit.equals("0")){
-            creditTextView.setTextSize(9);
-            creditTextView.setText("AUDIT");
-        }
-        else{
-            creditTextView.setTextSize(18);
-            creditTextView.setText(credit);}
+        creditTextView.setText(credit);
         gradePointTextView.setText(gradePoint);
+
+
+        if (credit.equals("0")) {
+            gradeTextView.setTextSize(9);
+            gradeTextView.setText("AUDIT");
+        } else if (g.equals("PENDING")) {
+            gradeTextView.setTextSize(9);
+            gradeTextView.setText("PENDING");
+        } else {
+            gradeTextView.setTextSize(18);
+            gradeTextView.setText(g);
+        }
+
 
     }
 

@@ -15,17 +15,16 @@ import com.example.cgpaucc.R;
 import java.util.List;
 
 
-// Create the basic adapter extending from RecyclerView.Adapter
-// Note that we specify the custom ViewHolder which gives us access to our views
+// Creates the basic adapter extending from RecyclerView.Adapter
 public class SemAdapter extends
         RecyclerView.Adapter<SemAdapter.ViewHolder> {
 
-    // Store a member variable for the contacts
+    // Stores a member variable for the contacts
     private List<Sem> mSem;
 
     private onSemListener mOnSemListener;
 
-    // Pass in the contact array into the constructor
+    // Passes in the contact array into the constructor
     public SemAdapter(List<Sem> sems, onSemListener onSemListener) {
         this.mOnSemListener = onSemListener;
         mSem = sems;
@@ -38,10 +37,10 @@ public class SemAdapter extends
         Context context = parent.getContext();
         LayoutInflater inflater = LayoutInflater.from(context);
 
-        // Inflate the custom layout
+        // Inflates the custom layout
         View semView = inflater.inflate(R.layout.sem_list_item, parent, false);
 
-        // Return a new holder instance
+        // Returns a new holder instance
         ViewHolder viewHolder = new ViewHolder(semView, mOnSemListener);
         return viewHolder;
     }
@@ -49,19 +48,18 @@ public class SemAdapter extends
     @Override
     public void onBindViewHolder(SemAdapter.ViewHolder holder, int position) {
 
-        // Get the data model based on position
+        // Gets the data model based on position
         Sem sem = mSem.get(position);
 
-        // Set item views based on your views and data model
+        // Sets item views based on views and data model
         TextView textView = holder.nameTextView;
         ImageView imageView = holder.default_Image;
         textView.setText(sem.getSemesterText());
 
-        if(sem.hasImage()) {
+        if (sem.hasImage()) {
             imageView.setImageResource(sem.getImg());
             imageView.setVisibility(View.VISIBLE);
-        }
-        else{
+        } else {
 
             imageView.setVisibility(View.GONE);
 
@@ -78,16 +76,15 @@ public class SemAdapter extends
 
     // Provide a direct reference to each of the views within a data item
     // Used to cache the views within the item layout for fast access
-    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
-        // Your holder should contain a member variable
-        // for any view that will be set as you render a row
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+
+
         public TextView nameTextView;
         public ImageView default_Image;
 
         onSemListener onSemListener;
 
-        // We also create a constructor that accepts the entire item row
-        // and does the view lookups to find each subview
+        // constructor that accepts the entire item row
         public ViewHolder(View itemView, onSemListener OnSemListener) {
             // Stores the itemView in a public final member variable that can be used
             // to access the context from any ViewHolder instance.
@@ -103,14 +100,15 @@ public class SemAdapter extends
         @Override
         public void onClick(View v) {
 
-        onSemListener.onSemClick(getAdapterPosition());
+            onSemListener.onSemClick(getAdapterPosition());
 
         }
     }
 
-    public interface onSemListener{
+    //OnItem click Listener
+    public interface onSemListener {
 
-         void onSemClick(int position);
+        void onSemClick(int position);
 
 
     }
