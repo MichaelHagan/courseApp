@@ -49,23 +49,23 @@ public class gpaContract {
     public static double isValidGrade(int grade) {
         switch (grade) {
             case gpaEntry.GRADE_A:
-                return (gpaEntry.GRADE_A / 2);
+                return (gpaEntry.GRADE_A);
             case gpaEntry.GRADE_B1:
-                return (gpaEntry.GRADE_B1 / 2);
+                return (gpaEntry.GRADE_B1);
             case gpaEntry.GRADE_B2:
-                return (gpaEntry.GRADE_B2 / 2);
+                return (gpaEntry.GRADE_B2);
             case gpaEntry.GRADE_C1:
-                return (gpaEntry.GRADE_C1 / 2);
+                return (gpaEntry.GRADE_C1);
             case gpaEntry.GRADE_C2:
-                return (gpaEntry.GRADE_C2 / 2);
+                return (gpaEntry.GRADE_C2);
             case gpaEntry.GRADE_D1:
-                return (gpaEntry.GRADE_D1 / 2);
+                return (gpaEntry.GRADE_D1);
             case gpaEntry.GRADE_D2:
-                return (gpaEntry.GRADE_D2 / 2);
+                return (gpaEntry.GRADE_D2);
             case gpaEntry.GRADE_E:
-                return (gpaEntry.GRADE_E / 2);
+                return (gpaEntry.GRADE_E);
             case gpaEntry.INACTIVE:
-                return (gpaEntry.INACTIVE / 2);
+                return (gpaEntry.INACTIVE);
         }
 
 
