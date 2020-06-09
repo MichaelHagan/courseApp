@@ -64,7 +64,7 @@ public class SemesterSelection extends AppCompatActivity {
 
         if (mShouldAnimateMenuItem && animate) {
             ImageView image = new ImageView(this);
-            image.setPadding(0, 0, 16, 0);
+            image.setPadding(16, 16, 16, 16);
             image.setImageResource(R.drawable.baseline_help_white_24);
             menu.getItem(0).setActionView(image); //item in the 0 position
             Animation anim = AnimationUtils.loadAnimation(this, R.anim.animation);
@@ -102,6 +102,9 @@ public class SemesterSelection extends AppCompatActivity {
         Intent help = new Intent(SemesterSelection.this, HelpActivity.class);
 
         if (animate) {
+            /**inserts dummy data into database in order to trigger the checkDB if statement.
+             *shuts off animation since the help activity has been accessed
+            **/
             SQLiteDatabase db = helper.getWritableDatabase();
             db.execSQL("INSERT INTO " + gpaEntry.TABLE_NAME + "( "
                     + gpaEntry.COLUMN_COURSE_CODE + ", "
@@ -126,11 +129,11 @@ public class SemesterSelection extends AppCompatActivity {
 
 
         if (mCursor.moveToFirst()) {
-            // DO SOMETHING WITH CURSOR
+            // Do not animate
             animate = false;
             mShouldAnimateMenuItem = false;
         } else {
-            // I AM EMPTY
+            // Animate
             animate = true;
             mShouldAnimateMenuItem = true;
         }
