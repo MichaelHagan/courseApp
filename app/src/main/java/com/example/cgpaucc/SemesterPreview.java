@@ -356,8 +356,8 @@ public class SemesterPreview extends AppCompatActivity implements LoaderManager.
                 TextView gpaTextView = (TextView) findViewById(R.id.gpa);
                 TextView cgpaTextView = (TextView) findViewById(R.id.cgpa);
 
-                gpaTextView.setText("GPA: " + String.format("%.5f", gpa));
-                cgpaTextView.setText("CGPA: " + String.format("%.5f", cgpa));
+                gpaTextView.setText("GPA: " + String.format("%.4f", gpa));
+                cgpaTextView.setText("CGPA: " + String.format("%.4f", cgpa));
 
             }
 
