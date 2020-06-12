@@ -7,8 +7,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CursorAdapter;
 import android.widget.TextView;
+import mike.hagan.cgpaucc.R;
 
-import com.example.cgpaucc.R;
 
 /**
  * {@link gpaCursorAdapter} is an adapter for a list or grid view

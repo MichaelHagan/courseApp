@@ -1,12 +1,10 @@
-package com.example.cgpaucc;
+package mike.hagan.cgpaucc;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.widget.ListView;
-
 import java.util.ArrayList;
-
 import data.helperAdapter;
 import data.helperData;
 

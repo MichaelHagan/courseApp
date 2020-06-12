@@ -1,4 +1,4 @@
-package com.example.cgpaucc;
+package mike.hagan.cgpaucc;
 
 import org.junit.Test;
 

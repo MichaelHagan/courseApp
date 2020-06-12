@@ -10,9 +10,11 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.cgpaucc.R;
+
 
 import java.util.List;
+
+import mike.hagan.cgpaucc.R;
 
 
 // Creates the basic adapter extending from RecyclerView.Adapter

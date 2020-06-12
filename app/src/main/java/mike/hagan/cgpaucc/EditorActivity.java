@@ -1,4 +1,4 @@
-package com.example.cgpaucc;
+package mike.hagan.cgpaucc;
 
 import android.content.ContentValues;
 import android.content.DialogInterface;

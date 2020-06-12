@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.example.cgpaucc;
+package mike.hagan.cgpaucc;
 
 import android.content.ContentUris;
 import android.content.DialogInterface;
@@ -22,15 +22,12 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.Bundle;
-
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-
 import androidx.loader.app.LoaderManager;
 import androidx.loader.content.CursorLoader;
 import androidx.loader.content.Loader;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -38,7 +35,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
-
 import data.gpaDbHelper;
 import data.gpaContract.gpaEntry;
 import data.gpaCursorAdapter;
@@ -99,7 +95,7 @@ public class SemesterPreview extends AppCompatActivity implements LoaderManager.
                 //Form the content URI that represents the specific course that was clicked on,
                 //by appending the "id" (passed as input to this method) onto the
                 //{@Link gpaEntry#CONTENT_URI}.
-                //For example, the URI would be "content://com.example.cgpaucc/cgpaucc/2"
+                //For example, the URI would be "content://mike.hagan.cgpaucc/cgpaucc/2"
                 //if the course with ID 2 was clicked on.
 
                 Uri currentCourseUri = ContentUris.withAppendedId(gpaEntry.CONTENT_URI, id);

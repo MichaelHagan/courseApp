@@ -6,11 +6,11 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
-import com.example.cgpaucc.L100;
-import com.example.cgpaucc.L200;
-import com.example.cgpaucc.L300;
-import com.example.cgpaucc.L400;
-import com.example.cgpaucc.R;
+import mike.hagan.cgpaucc.L100;
+import mike.hagan.cgpaucc.L200;
+import mike.hagan.cgpaucc.L300;
+import mike.hagan.cgpaucc.L400;
+import mike.hagan.cgpaucc.R;
 
 
 /**
